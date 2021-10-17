@@ -1,0 +1,192 @@
+swagger: '2.0'
+info:
+  description: |
+    Xentronics REST API. 
+  version: 1.0.0
+  title: Xentronics
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: xentronics.herokuapp.com
+basePath: /api
+tags:
+- name: users
+  description: Xentronics user
+- name: products
+  description: Xentronics products
+# schemes:
+# - http
+paths:
+  
+  /users/{userId}:
+    get:
+      tags:
+      - users
+      summary: Get user's purchase history
+      produces:
+      - application/json
+      parameters:
+      - name: userId
+        in: path
+        description: ID of user to return
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+        500:
+          description: error
+  /users/{userId}/cart/checkout:
+    get:
+      tags:
+      - users
+      summary: Checkout user's cart items
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: userId
+        in: path
+        description: ID of user to checkout
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+        500:
+          description: error
+  /users/{userId}/cart:
+    get:
+      tags:
+      - users
+      summary: Get user's cart items
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: userId
+        in: path
+        description: ID of user to return
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+        500:
+          description: error
+    post:
+      tags:
+      - users
+      summary: Add product to user's cart
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: userId
+        in: path
+        description: User id
+        required: true
+        type: integer
+        format: int64
+
+      - in: body
+        name: body
+        description: Item that needs to be added to the cart
+        required: true
+        schema:
+          $ref: '#/definitions/CartProduct'
+      responses:
+        200:
+          description: successful operation
+        500:
+          description: error
+  /users/{userId}/cart/{productId}:
+    delete:
+      tags:
+      - users
+      summary: Deletes a cart item
+      produces:
+      - application/json
+      parameters:
+      - name: userId
+        in: path
+        description: User id of item to delete
+        required: true
+        type: integer
+        format: int64
+      - name: productId
+        in: path
+        description: Product id of item to delete
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+        500:
+          description: error
+  /products/{productId}:
+    get:
+      tags:
+      - products
+      summary: Get product by Id
+      produces:
+      - application/json
+      parameters:
+      - name: productId
+        in: path
+        description: ID of product to return
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+        500:
+          description: error
+  /products/categories:
+    get:
+      tags:
+      - products
+      summary: Get all product categories
+      produces:
+      - application/json
+      responses:
+        200:
+          description: successful operation
+        500:
+          description: error
+  /products/categories/{categoryId}:
+    get:
+      tags:
+      - products
+      summary: Get product category by Id
+      produces:
+      - application/json
+      parameters:
+      - name: categoryId
+        in: path
+        description: ID of product category to return
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+        500:
+          description: error
+
+definitions:
+  CartProduct:
+    type: object
+    properties:
+      product_id:
+        type: integer
+        format: int64
+      qty:
+        type: integer
+        format: int64
