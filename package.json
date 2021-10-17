@@ -4,6 +4,7 @@
         "server": "node xentronics-node/server/index.js",
         "client": "npm start --prefix xentronics-react",
         "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "build": "node xentronics-node/server/index.js"
     },
 
     "engines": {
