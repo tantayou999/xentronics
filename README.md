@@ -28,12 +28,14 @@ The aim of this project is to create an application that holds the data of an on
 
 ### ERD
 
-![ERD diagram](blob:https://i.imgur.com/VkWAVZV.png)
+![ERD diagram](https://i.imgur.com/VkWAVZV.png)
+
 The database is built on PostgreSQL
 A simple ERD design with Products grouped by Product Categories, having many-to-many relationships with users in terms of product currently in cart, and products already purchased.
 
 ### API
 Express.js (Node) is selected as the framework of choice here.
+
 [Swagger-hosted API documentation through OpenAPI specification](https://app.swaggerhub.com/apis-docs/TE-TOTAL-SOLUTIONS/Xentronics/1.0.0#/)
 
 ### Web application
