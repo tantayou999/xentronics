@@ -78,7 +78,6 @@ const removeFromCart = (request, response) => {
 
 const checkOut = (request, response) => {
     const user_id = parseInt(request.params.user_id)
-    // not done
     pool.query('CALL checkout($1)', [user_id], (error, results) => {
         if (error) {
         throw error
