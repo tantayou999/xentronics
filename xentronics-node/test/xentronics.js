@@ -206,4 +206,20 @@ describe('Xentronics', () => {
               });
         });
       });
+
+    describe('SQL injection test', () => {
+        it('it should return error when SQL injected', (done) => {
+            let item = {
+                product_id: 1,
+                qty: '; DROP TABLE users;'
+            }
+                chai.request(server)
+                .post('/api/users/0/cart')
+                .send(item)
+                .end((err, res) => {
+                    res.should.have.status(500);
+                done();
+                });
+        });
+    });
 });
