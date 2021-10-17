@@ -21,13 +21,13 @@ app.get("/api", (req, res) => {
     res.json({ message: "Hello from Express!" });
   });
 
-app.get('/users', db.getUsers)
-app.get('/products/categories', db.getProductCategories)
-app.get('/products/:product_id', db.getProductsById)
-app.get('/products/categories/:category_id', db.getProducts)
-app.get('/users/:user_id/cart', db.getCartById)
-app.post('/users/:user_id/cart', db.addToCart)
-app.delete('/users/:user_id/cart', db.removeFromCart)
-app.get('/users/:user_id/cart/checkout', db.checkOut)
-app.get('/users/:user_id', db.getUser)
+app.get('/api/users', db.getUsers)
+app.get('/api/products/categories', db.getProductCategories)
+app.get('/api/products/:product_id', db.getProductsById)
+app.get('/api/products/categories/:category_id', db.getProducts)
+app.get('/api/users/:user_id/cart', db.getCartById)
+app.post('/api/users/:user_id/cart', db.addToCart)
+app.delete('/api/users/:user_id/cart', db.removeFromCart)
+app.get('/api/users/:user_id/cart/checkout', db.checkOut)
+app.get('/api/users/:user_id', db.getUser)
 
