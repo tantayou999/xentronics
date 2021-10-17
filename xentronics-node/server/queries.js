@@ -11,7 +11,6 @@ pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
 })
 }
 
-//DONE
 const getProductCategories = (request, response) => {
     pool.query('SELECT * FROM productcategories ORDER BY id ASC', (error, results) => {
         if (error) {
@@ -21,7 +20,6 @@ const getProductCategories = (request, response) => {
     })
 }
 
-//DONE
 const getProducts = (request, response) => {
     const category_id = parseInt(request.params.category_id)
     pool.query('SELECT * FROM products WHERE category_id = $1 ORDER BY id ASC', [category_id], (error, results) => {
@@ -42,7 +40,6 @@ const getProductsById = (request, response) => {
     })
 }
 
-//DONE
 const getCartById = (request, response) => {
     const user_id = parseInt(request.params.user_id)
   
@@ -54,7 +51,6 @@ const getCartById = (request, response) => {
     })
 }
 
-//DONE
 const addToCart = (request, response) => {
     const user_id = parseInt(request.params.user_id)
     const product_id = parseInt(request.body.product_id)
@@ -68,7 +64,6 @@ const addToCart = (request, response) => {
 }
 
 
-//DONE
 const removeFromCart = (request, response) => {
     const user_id = parseInt(request.params.user_id)
     const product_id = parseInt(request.body.product_id)
@@ -81,7 +76,6 @@ const removeFromCart = (request, response) => {
     })
 }
 
-//DONE
 const checkOut = (request, response) => {
     const user_id = parseInt(request.params.user_id)
     // not done
@@ -93,7 +87,6 @@ const checkOut = (request, response) => {
     })
 }
 
-//DONE
 const getUser = (request, response) => {
     const user_id = parseInt(request.params.user_id)
     pool.query('SELECT * FROM productspurchased WHERE user_id = $1 ORDER BY id ASC', [user_id], (error, results) => {
