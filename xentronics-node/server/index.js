@@ -26,7 +26,7 @@ app.get("/api/products/:product_id", db.getProductsById);
 app.get("/api/products/categories/:category_id", db.getProducts);
 app.get("/api/users/:user_id/cart", db.getCartById);
 app.post("/api/users/:user_id/cart", db.addToCart);
-app.delete("/api/users/:user_id/cart", db.removeFromCart);
+app.delete("/api/users/:user_id/cart/:product_id", db.removeFromCart);
 app.get("/api/users/:user_id/cart/checkout", db.checkOut);
 app.get("/api/users/:user_id", db.getUser);
 

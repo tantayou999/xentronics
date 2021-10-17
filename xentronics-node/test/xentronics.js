@@ -130,11 +130,8 @@ describe('Xentronics', () => {
 
         it('it should not DELETE a cart item when not given int user id', (done) => {
 
-            let item = {
-            }
             chai.request(server)
-            .delete('/api/users/asd/cart/')
-            .send(item)
+            .delete('/api/users/asd/cart/1')
             .end((err, res) => {
                 res.should.have.status(500);
             done();
@@ -148,16 +145,12 @@ describe('Xentronics', () => {
                 product_id: 1,
                 qty: 4
             }
-            let item2 = {
-                product_id: 1,
-            }
             chai.request(server)
             .post('/api/users/0/cart')
             .send(item)
             .end((err, res) => {
                     chai.request(server)
-                    .delete('/api/users/0/cart/')
-                    .send(item2)
+                    .delete('/api/users/0/cart/1')
                     .end((err, res) => {
                         res.should.have.status(200);
                         res.body.should.be.a('object');
