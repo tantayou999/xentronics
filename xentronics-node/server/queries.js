@@ -113,7 +113,7 @@ const checkOut = (request, response) => {
 const getUser = (request, response) => {
   const { user_id } = request.params;
   pool.query(
-    "SELECT * FROM productspurchased LEFT JOIN (SELECT * FROM products) p ON (productspurchased.product_id = p.id) WHERE user_id = $1",
+    "SELECT * FROM productspurchased LEFT JOIN (SELECT * FROM products) p ON (productspurchased.product_id = p.id) WHERE user_id = $1 ORDER BY time DESC",
     [user_id],
     (error, results) => {
       if (error) {
